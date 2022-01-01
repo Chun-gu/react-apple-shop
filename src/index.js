@@ -4,7 +4,16 @@ import "./index.css";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import { BrowserRouter } from "react-router-dom";
-import 'bootstrap/dist/css/bootstrap.min.css';
+import "bootstrap/dist/css/bootstrap.min.css";
+import Clayful from "clayful/client-js";
+import clayfulConfig from "./config/clayfulConfig.json";
+import axios from "axios";
+
+// clayful 연동
+Clayful.config({
+  client: clayfulConfig.token,
+});
+Clayful.install("request", require("clayful/plugins/request-axios")(axios));
 
 ReactDOM.render(
   <React.StrictMode>
