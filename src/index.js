@@ -8,6 +8,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import Clayful from "clayful/client-js";
 import clayfulConfig from "./config/clayfulConfig.json";
 import axios from "axios";
+import './css/auth.css'
 
 // clayful 연동
 Clayful.config({
