@@ -37,29 +37,31 @@ export const RegisterPage = () => {
   };
 
   return (
-    <div className="auth-wrapper">
-      <h1>회원가입</h1>
-      <form onSubmit={handleSubmit}>
-        <input
-          onChange={handleEmailChange}
-          placeholder="Apple Id"
-          type="email"
-          name="email"
-          value={email}
-        />
-        <input
-          onChange={handlePasswordChange}
-          placeholder="암호"
-          type="password"
-          name="password"
-          minLength="8"
-          value={password}
-        />
-        <button type="submit">회원가입</button>
-        <Link to="login" style={{ color: "grey", textDecoration: "none" }}>
-          이미 Apple Id가 있다면? 지금 로그인
-        </Link>
-      </form>
+    <div className="pageWrapper">
+      <div className="auth-wrapper">
+        <h1>회원가입</h1>
+        <form onSubmit={handleSubmit}>
+          <input
+            onChange={handleEmailChange}
+            placeholder="Apple Id"
+            type="email"
+            name="email"
+            value={email}
+          />
+          <input
+            onChange={handlePasswordChange}
+            placeholder="암호"
+            type="password"
+            name="password"
+            minLength="8"
+            value={password}
+          />
+          <button type="submit">회원가입</button>
+          <Link to="/login" style={{ color: "grey", textDecoration: "none" }}>
+            이미 Apple Id가 있다면? 지금 로그인
+          </Link>
+        </form>
+      </div>
     </div>
   );
 };
