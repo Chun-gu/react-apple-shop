@@ -1,10 +1,11 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import Clayful from "clayful/client-js";
 
 export const RegisterPage = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const navigate = useNavigate();
 
   const handleEmailChange = (event) => {
     setEmail(event.target.value);
@@ -16,25 +17,24 @@ export const RegisterPage = () => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
+    const Customer = Clayful.Customer;
+
+    const payload = {
+      email,
+      password,
+    };
+
+    Customer.createMe(payload, function (err, result) {
+      if (err) {
+        // Error case
+        console.log(err.code);
+        return;
+      }
+      var data = result.data;
+      console.log(data);
+      navigate("/login");
+    });
   };
-
-  var Customer = Clayful.Customer;
-
-  var payload = {
-    email,
-    password,
-  };
-console.log(payload)
-  Customer.createMe(payload, function (err, result) {
-    if (err) {
-      // Error case
-      console.log(err.code);
-    }
-
-    var data = result.data;
-
-    console.log(data);
-  });
 
   return (
     <div className="auth-wrapper">
@@ -52,6 +52,7 @@ console.log(payload)
           placeholder="암호"
           type="password"
           name="password"
+          minLength="8"
           value={password}
         />
         <button type="submit">회원가입</button>
